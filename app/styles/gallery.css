@@ -1,0 +1,135 @@
+/*
+.container h1{
+  font-size: 4em;
+  font-family: "Pacifico";
+  color: #1f2133;
+}
+
+.imagebox {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-outside: 30px;
+  padding-bottom: 30px;
+  overflow: hidden;
+}
+
+.imagebox img {
+  width: 200px;
+  height: 200px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.imagebox p{
+  font-family: Arial;
+  line-height: 1.46;
+  position: relative;
+}
+
+.imagebox h3 {
+
+  font-family: Arial;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 12px;
+  font-weight: bolder;
+  color: #16191c;
+}
+
+ul.products li {
+  display: inline-block;
+  vertical-align: top;
+  *display: inline;
+  *zoom: 1;
+}
+*/
+
+.container{
+  margin-left: 50px;
+  line-height: 1.46;
+}
+.container h2{
+  /*font-size: 2em;*/
+  /*font-family: "Libre Baskerville";*/
+  color: #1f2133;
+
+}
+.container p{
+  /*font-family: "Arial";*/
+  color: #515151;
+}
+
+.products{
+  width: 80vw;
+  align-content: center;
+}
+
+ul.products li {
+  margin-top: 30px;
+  width: 300px;
+  height: 400px;
+  display: inline-block;
+  vertical-align: top;
+  *display: inline;
+  *zoom: 1;
+}
+
+.imagebox img{
+  width: auto;
+  height: 150px;
+  align-content: center;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  -moz-transition:-moz-transform 0.5s ease-in;
+  -webkit-transition:-webkit-transform 0.5s ease-in;
+  -o-transition:-o-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  -webkit-box-shadow: 0 8px 40px -10px rgba(148, 173, 182, 0.51);
+  -moz-box-shadow:0 8px 40px -10px rgba(148, 173, 182, 0.51);
+  box-shadow: 0 8px 40px -10px rgba(148, 173, 182, 0.51);
+}
+
+.thumbnail:hover {
+
+  -moz-transform:scale(2);
+  -webkit-transform:scale(2);
+  -o-transform:scale(2);
+  transform:scale(2)
+}
+
+.imagebox h3{
+  font-family: "Verdana";
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #16191c;
+  line-height: 0.5em;
+}
+
+input[type=button]{
+  margin-left: 20px;
+  padding: 5px 15px;
+  margin: 3px 4px;
+  color: #4654f6;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #ffffff;
+  border: 3px solid #4654f6;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+
+}
+input[type=button]:hover{
+  color: #ffffff;
+  background: #4654f6 ;
+}
+
+input[type=button]:active{
+  opacity:0.8;
+}
+
