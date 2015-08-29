@@ -10,7 +10,7 @@ module.exports = mongoose.model('User', {
   email : {type: String, allowNull: false},
   password : {type: String, allowNull: false},
   confirmPassword : {type: String, allowNull: false},
-  city : {type: String, default:''}
+  //city : {type: String, default:''}
   //address : {type: String, default:''},
   //state : {type: String, default:''},
   //country : {type: String, default:''},
