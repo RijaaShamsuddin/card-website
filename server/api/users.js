@@ -3,11 +3,35 @@
  */
 var mongoose = require('mongoose');
 var User = require('../models/user');
+var Category = require('../models/category');
+var Card = require('../models/card');
+
 module.exports = function(app)
 {
+ app.get('/categories', function (req, res) {
+
+    Category.find(function (err, categories) {
+      if (err)
+        res.send(err);
+
+      res.json(categories);
+    });
+  });
+
+  app.get('/cards', function (req, res) {
+
+    Card.find(function (err, cards) {
+      if (err)
+        res.send(err);
+
+      res.json(cards);
+    });
+  });
+
 
   app.post('/user', function(req, res)
   {
+    console.log(req.body.email);
     User.findOne({ 'email': req.body.email }, function (err, user) {
       // In case of any error, return using the done method
       if (err) {
@@ -15,24 +39,21 @@ module.exports = function(app)
         res.send('Error in SignUp', 400);
       }
       // already exists
-      if (user) {
+     if (user) {
         console.log('User already exists with email: ' +  req.body.email);
         res.send('User already exists with this email', 400);
-      } else {
+      }
+     else {
         // if there is no user with that email
         // create the user
         var newUser = new User();
         // set the user's local credentials
-        newUser.username = req.body.username;
-        newUser.email = req.body.email;
+        newUser.userName = req.body.userName;
+        newUser.email = req.body.email.toLowerCase();
         newUser.password = req.body.password;
         newUser.firstName = req.body.firstName || '';
         newUser.lastName = req.body.lastName || '';
-        //newUser.address = req.body.address || '';
-        //newUser.city =  req.body.city || '';
-        //newUser.state =  req.body.state || '';
-        //newUser.country =  req.body.country || '';
-        //newUser.role =  req.body.role || 'agent';
+
         // save the user
         newUser.save(function (err, user) {
           if (err) {
@@ -44,6 +65,49 @@ module.exports = function(app)
         });
       }
     });
+  });
+
+
+
+  app.post('/login', function(req, res)
+  {
+
+    if(req.body.email && req.body.password)
+    {
+      User.findOne({ 'email': req.body.email }, function (err, user) {
+        // In case of any error, return using the done method
+        if (err) {
+          console.log('Error in fetching user: ' + err);
+          res.send('Error', 400);
+
+        }
+        // user exists
+        if (user) {
+          console.log(user)
+          if(user.password == req.body.password)
+          {
+            res.send(user)
+          }
+          else
+          {
+            console.log('Wrong password');
+            res.send('Wrong Password', 400);
+          }
+        }
+
+        else {
+          console.log('Error in fetching user: ' + err);
+          res.send('User not found', 400);
+        }
+      });
+      }
+    else
+    {
+
+      console.log(req.body);
+      res.send('Please send email and password', 400);
+    }
+
   });
 
 

@@ -8,8 +8,10 @@
  * Controller of the muocApp
  */
 angular.module('muocApp')
-  .controller('LoginCtrl', function ($scope,$http)
+  .controller('LoginCtrl', function ($scope, $http, $location)
   {
+
+    $scope.errorMessage = '';
     $scope.data = {
       email:'',
       password: ''
@@ -17,16 +19,22 @@ angular.module('muocApp')
 
     $scope.login = function() {
 
-        $http.get('/user/:username')
+        $http.post('/login', $scope.data)
           .success(function (user) {
-            console.log('User found')
-            console.log(user)
+            $scope.errorMessage = '';
+            localStorage.setItem('User', user);
+            $location.path('/main_page')
           })
           .error(function (err) {
-            console.log('Error')
+            $scope.errorMessage = 'Please enter valid email and password!!';
+            $scope.data = {
+              email:'',
+              password: ''
+            };
           });
 
       }
-
+    $scope.user = localStorage.getItem('User');
+    localStorage.removeItem('User');
 
   });

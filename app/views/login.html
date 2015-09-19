@@ -21,13 +21,17 @@
     <br>
     <div class="checkbox">
       <br>
-      <label>
+    <!--  <label>
         <input type="checkbox" value="remember-me"> Remember me
-      </label>
+      </label>-->
     </div>
     <button class="btn btn-primary btn-lg" type="submit" ng-click="login()">Log in</button>
+    <p>Not a user yet?</p> <a href="#/signup">Sign Up Here!</a>
+
+    <p ng-show="errorMessage.length" style="color: red; text-align: center" > {{errorMessage}}</p>
   </form>
 </div>
       </div>
     </div>
   </div>
+
