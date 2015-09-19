@@ -22,16 +22,16 @@ angular
     $routeProvider
 
       .when('/', {
-        templateUrl: 'views/main_page.html'
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
 
       })
       .when('/gallery', {
         templateUrl: 'views/gallery.html',
         controller: 'galleryCtrl'
       })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+      .when('/main_page', {
+        templateUrl: 'views/main_page.html'
       })
       .when('/signup', {
         templateUrl: 'views/sign_up.html',

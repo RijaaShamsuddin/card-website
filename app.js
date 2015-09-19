@@ -12,7 +12,6 @@ var app = express();
 
 var config = require('./server/config');
 mongoose.connect(config.mongo.uri, config.mongo.options);
-
 var router = express.Router();
 
 

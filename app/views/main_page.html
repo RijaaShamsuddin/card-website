@@ -1,5 +1,45 @@
 <link href="../styles/main.css" rel="stylesheet">
 
+<!-- Navigation -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+      <a class="navbar-brand" href="index.html">Banwalo</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#/main_page">Home</a>
+        </li>
+        <li>
+          <a href="#/gallery">Our Designs &#9662;</a>
+          <ul class="dropdown">
+            <li><a href="#" ng-repeat="category in categories">
+              <b>{{category.name}}</b></a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#/about">About US</a>
+        </li>
+        <li>
+          <a href="#/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
 
 <div class="container">
 
@@ -60,7 +100,7 @@
         <hr>
         <p> A handmade card is always the perfect card because it is created with a lot of hard work,
 
-          dedication and love. We make cards that can make your special one/'s day even more
+          dedication and love. We make cards that can make your special one's day even more
 
           special.  You can add your own photos, words according to your preferences so give it your
 

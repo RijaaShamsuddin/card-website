@@ -8,7 +8,7 @@
  * Controller of the muocApp
  */
 angular.module('muocApp')
-  .controller('signUpCtrl', function ($scope, $http)
+  .controller('signUpCtrl', function ($scope, $http, $location)
   { $scope.message
 
     $scope.data = {
@@ -33,10 +33,12 @@ angular.module('muocApp')
         $http.post('/user', $scope.data)
           .success(function (user) {
             console.log('User created')
-            console.log(user)
+            $location.path('/')
+
           })
           .error(function (err) {
             console.log('Error')
+            $scope.message = 'User already exists with email';
           });
 
       }

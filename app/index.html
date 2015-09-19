@@ -9,10 +9,10 @@
     <title>Make Your Own Card</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../styles/main.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -32,10 +32,10 @@
     <div class="brand">Banwalo</div>
     <!--<div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>-->
 
-    <!-- Navigation -->
+    <!--&lt;!&ndash; Navigation &ndash;&gt;
     <nav class="navbar navbar-default" role="navigation">
       <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
+        &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -43,24 +43,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+          &lt;!&ndash; navbar-brand is hidden on larger screens, but visible when the menu is collapsed &ndash;&gt;
           <a class="navbar-brand" href="index.html">Banwalo</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
+        &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li>
               <a href="#/main_page">Home</a>
             </li>
             <li>
-              <a href="#/gallery">Gallery</a>
+              <a href="#/gallery">Our Designs &#9662;</a>
+              <ul class="dropdown">
+                <li><a href="#" ng-repeat="category in categories">
+                  <b>{{category.name}}</b></a></li>
+              </ul>
             </li>
-            <li>
-              <a href="#/login">Log in</a>
-            </li>
-            <li>
-              <a href="#/signup">Sign Up</a>
-            </li>
+
             <li>
               <a href="#/about">About US</a>
             </li>
@@ -69,10 +68,10 @@
             </li>
           </ul>
         </div>
-        <!-- /.navbar-collapse -->
+        &lt;!&ndash; /.navbar-collapse &ndash;&gt;
       </div>
-      <!-- /.container -->
-    </nav>
+      &lt;!&ndash; /.container &ndash;&gt;
+    </nav>-->
 
     <div ng-view></div>
 
@@ -117,15 +116,17 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <!--<script src="scripts/mongoFactory.js"></script>-->
+        <script src="scripts/controllers/categoryCtrl.js"></script>
         <script src="scripts/controllers/galleryCtrl.js"></script>
         <script src="scripts/controllers/loginCtrl.js"></script>
         <script src="scripts/controllers/signUpCtrl.js"></script>
         <!-- endbuild -->
     <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>
