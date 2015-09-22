@@ -7,8 +7,8 @@
  * # MainCtrl
  * Controller of the muocApp
  */
-angular.module('muocApp')
-  .controller('LoginCtrl', function ($scope, $http, $location)
+
+app.controller('LoginCtrl', function ($scope, $http, $location, sharedMethods)
   {
 
     $scope.errorMessage = '';
@@ -17,12 +17,16 @@ angular.module('muocApp')
       password: ''
     }
 
+    $scope.logout = sharedMethods.logout;
+
+
     $scope.login = function() {
 
         $http.post('/login', $scope.data)
           .success(function (user) {
             $scope.errorMessage = '';
-            localStorage.setItem('User', user);
+            localStorage.setItem("user", JSON.stringify(user));
+            console.log(user)
             $location.path('/main_page')
           })
           .error(function (err) {
@@ -34,7 +38,7 @@ angular.module('muocApp')
           });
 
       }
-    $scope.user = localStorage.getItem('User');
-    localStorage.removeItem('User');
+
+
 
   });
