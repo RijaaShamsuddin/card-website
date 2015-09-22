@@ -4,8 +4,8 @@
 
 /*var mongoFactory = ('../scripts/mongoFactory')*/
 
-angular.module('muocApp')
-  .controller('categoryCtrl', function ($scope,$http)
+
+app.controller('categoryCtrl', function ($scope,$http)
   {
     /*$scope.mongoStuff = {};
     mongoFactory.getMongoStuff()

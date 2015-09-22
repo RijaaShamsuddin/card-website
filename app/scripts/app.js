@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('muocApp', [
     'ngAnimate',
     'ngCookies',
@@ -31,7 +31,8 @@ angular
         controller: 'galleryCtrl'
       })
       .when('/main_page', {
-        templateUrl: 'views/main_page.html'
+        templateUrl: 'views/main_page.html',
+        controller : 'main_pageCtrl'
       })
       .when('/signup', {
         templateUrl: 'views/sign_up.html',
