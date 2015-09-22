@@ -4,9 +4,17 @@
 
 angular.module('muocApp')
   .factory('logoutFactory', function ($http, $location) {
-    var service = {};
-    
-      return service;
+
+      return
+    {
+      remove: (function (user) {
+        localStorage.removeItem('User');
+        $location.path('/')
+        console.log("done")
+        })
+
+    }
+
 
 
   });
