@@ -44,10 +44,12 @@
       </label>
     </div>
     <button class="btn btn-primary btn-lg" type="submit" ng-click="signUp()">Sign Up</button>
-    <p>A user already?</p> <a href="#/">Log in Here!</a>
+    <p>A user already?</p>
+    <a style="font-size: large" href="#/">Log in Here!</a>
     <p class="text-center">
       {{message}}
     </p>
+    <p ng-show="errorMessage.length" style="color: red; text-align: center" > {{errorMessage}}</p>
   </form>
 </div>
       </div>

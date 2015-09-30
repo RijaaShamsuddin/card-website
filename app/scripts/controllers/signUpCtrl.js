@@ -7,9 +7,10 @@
  * # MainCtrl
  * Controller of the muocApp
  */
-angular.module('muocApp')
-  .controller('signUpCtrl', function ($scope, $http, $location)
-  { $scope.message
+
+app.controller('signUpCtrl', function ($scope, $http, $location)
+  { $scope.message = '';
+    $scope.errorMessage = '';
 
     $scope.data = {
       firstName:'',
@@ -25,6 +26,7 @@ angular.module('muocApp')
       {
         $scope.message = 'Passwords do not match';
 
+
       }
 
      else
@@ -32,13 +34,15 @@ angular.module('muocApp')
         $scope.message = '';
         $http.post('/user', $scope.data)
           .success(function (user) {
+            $scope.errorMessage = '';
             console.log('User created')
             $location.path('/')
 
           })
           .error(function (err) {
             console.log('Error')
-            $scope.message = 'User already exists with email';
+            $scope.errorMessage = 'User already exists with email';
+
           });
 
       }

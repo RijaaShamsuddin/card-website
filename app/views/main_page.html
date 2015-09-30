@@ -1,4 +1,5 @@
 <link href="../styles/main.css" rel="stylesheet">
+<link href="../styles/main_page.css" rel="stylesheet">
 
 <!-- Navigation -->
 <nav class="navbar navbar-default" role="navigation">
@@ -36,10 +37,20 @@
         </li>
       </ul>
     </div>
+    <div id="greeting" ng-if="user" style="float:right">
+      <strong>Hi, {{user.userName}}! &#9662;</strong>
+      <ul class="dropdown">
+        <li><a href="#" >My Profile</a></li>
+        <li><a href="#" >My Orders</a></li>
+        <li><a href="#/" ng-click="logout()">Log Out</a></li>
+      </ul>
+    </div>
     <!-- /.navbar-collapse -->
   </div>
+>
   <!-- /.container -->
 </nav>
+
 
 <div class="container">
 
@@ -110,6 +121,7 @@
 
           or even to your special someone for you. </p>
         <p>So bring a smile to their faces and shop away!</p>
+
       </div>
     </div>
   </div>
