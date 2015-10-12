@@ -1,8 +1,8 @@
 /**
  * Created by Hira on 8/5/2015.
  */
-angular.module('muocApp')
-  .controller('galleryCtrl', function ($scope)
+
+app.controller('galleryCtrl', function ($scope)
   {
     $scope.cards = {
       "CRD-001": {
