@@ -43,6 +43,10 @@ angular
       .when('/contact', {
         templateUrl: 'views/contact.html'
       })
+      .when ('/admin',{
+        templateUrl:'views/admin.html'
+
+    })
       .otherwise({
         redirectTo: '/'
       });
