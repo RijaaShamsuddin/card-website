@@ -18,6 +18,8 @@ var app = angular
     'ngTouch'
   ])
 
+
+
   .config(function ($routeProvider) {
     $routeProvider
 
@@ -26,9 +28,9 @@ var app = angular
         controller: 'LoginCtrl'
 
       })
-      .when('/gallery', {
-        templateUrl: 'views/gallery.html',
-        controller: 'galleryCtrl'
+      .when('/cards/:_id', {
+        templateUrl: 'views/card.html',
+        controller: 'cardCtrl'
       })
       .when('/main_page', {
         templateUrl: 'views/main_page.html',
@@ -39,10 +41,24 @@ var app = angular
         controller: 'signUpCtrl'
       })
       .when('/about', {
-        templateUrl: 'views/about.html'
+        templateUrl: 'views/about.html',
+        controller: 'aboutCtrl'
       })
       .when('/contact', {
-        templateUrl: 'views/contact.html'
+        templateUrl: 'views/contact.html',
+        controller: 'contactCtrl'
+      })
+      .when('/user_profile', {
+        templateUrl: 'views/user_profile.html',
+        controller: 'user_profileCtrl'
+      })
+      .when('/gallery/:category_id', {
+        templateUrl: 'views/gallery.html',
+        controller: 'galleryCtrl'
+      })
+      .when('/updateUser/:_id', {
+        templateUrl: 'views/user_edit.html',
+        controller: 'user_editCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -4,6 +4,6 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/muoc'
+    uri: 'mongodb://Hira:hira@ds059692.mongolab.com:59692/muoc'
   }
 };

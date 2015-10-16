@@ -21,10 +21,9 @@
           <a href="#/main_page">Home</a>
         </li>
         <li>
-          <a href="#/gallery">Our Designs &#9662;</a>
+          <a >Our Designs &#9662;</a>
           <ul class="dropdown">
-            <li><a href="#" ng-repeat="category in categories">
-              <b>{{category.name}}</b></a></li>
+            <li><a  ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
           </ul>
         </li>
 
@@ -37,16 +36,16 @@
       </ul>
     </div>
     <div id="greeting" ng-if="user" style="float:right">
-      <strong>Hi, {{user.userName}}! &#9662;</strong>
+      <span class="glyphicon glyphicon-user"></span><strong>Hi, {{user.userName}}! &#9662;</strong>
       <ul class="dropdown">
-        <li><a href="#" >My Profile</a></li>
+        <li><a href="#/user_profile" >My Profile</a></li>
         <li><a href="#" >My Orders</a></li>
         <li><a href="#/" ng-click="logout()">Log Out</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
   </div>
-  >
+
   <!-- /.container -->
 </nav>
 
@@ -87,7 +86,7 @@
 
           Our objective is to provide the customer with the capability to design; a simple new way to
 
-          design. Design shouldn’/t be hard but somewhere along the way we became bogged down with
+          design. Design shouldn’t be hard but somewhere along the way we became bogged down with
 
           expensive, complicated software that put design out of reach for most.
 
