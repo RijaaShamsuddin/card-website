@@ -8,9 +8,8 @@ var Schema = mongoose.Schema;
 var cardSchema = new Schema( {
   category_id : String,
   name : String,
+  url: String,
   price: Number,
-  description : String
-
 
 });
 

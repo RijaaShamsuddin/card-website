@@ -22,10 +22,9 @@
           <a href="#/main_page">Home</a>
         </li>
         <li>
-          <a href="#/gallery">Our Designs &#9662;</a>
+          <a >Our Designs &#9662;</a>
           <ul class="dropdown">
-            <li><a href="#" ng-repeat="category in categories">
-              <b>{{category.name}}</b></a></li>
+            <li><a  ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
           </ul>
         </li>
 
@@ -38,16 +37,16 @@
       </ul>
     </div>
     <div id="greeting" ng-if="user" style="float:right">
-      <strong>Hi, {{user.userName}}! &#9662;</strong>
+      <span class="glyphicon glyphicon-user"></span><strong> Hi, {{user.userName}}! &#9662;</strong>
       <ul class="dropdown">
-        <li><a href="#" >My Profile</a></li>
+        <li><a href="#/user_profile" >My Profile</a></li>
         <li><a href="#" >My Orders</a></li>
         <li><a href="#/" ng-click="logout()">Log Out</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
   </div>
->
+
   <!-- /.container -->
 </nav>
 
@@ -109,6 +108,7 @@
           <strong>we make</strong>
         </h2>
         <hr>
+       <a  ng-show="currentCategory">Current Category: {{currentCategory.name}}</a>
         <p> A handmade card is always the perfect card because it is created with a lot of hard work,
 
           dedication and love. We make cards that can make your special one's day even more
