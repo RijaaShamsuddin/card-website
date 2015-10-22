@@ -61,7 +61,6 @@ var app = angular
         templateUrl: '../views/user_views/user_edit.html',
         controller: 'user_editCtrl'
       })
-<<<<<<< HEAD
       .when('/order',{
         templateUrl: '../views/order_views/order_details.html',
         controller: 'orderCtrl'
@@ -70,12 +69,10 @@ var app = angular
         templateUrl: '../views/order_views/cart.html',
         controller: 'cartCtrl'
       })
-=======
       .when ('/admin',{
         templateUrl:'views/admin.html'
 
     })
->>>>>>> master
       .otherwise({
         redirectTo: '/'
       });
