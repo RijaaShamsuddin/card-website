@@ -3,7 +3,7 @@
 app.controller('main_pageCtrl', function ($scope, $http, $location, sharedMethods, Category){
 
   $scope.user = JSON.parse(localStorage.getItem('user'))
-  //console.log($scope.user)
+  console.log($scope.user)
   if(!$scope.user)
   {
     $location.path('/');

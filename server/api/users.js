@@ -2,13 +2,26 @@
  * Created by sohaib on 1/15/2015.
  */
 var mongoose = require('mongoose');
+var Admin = require('../models/admin');
+var Order = require('../models/order');
 var User = require('../models/user');
 var Category = require('../models/category');
 var Card = require('../models/card');
 
 module.exports = function(app)
 {
- app.get('/categories', function (req, res) {
+  app.get('/admin', function (req, res) {
+
+    Admin.find(function (err, admin) {
+      if (err)
+        res.send(err);
+
+      res.json(admin);
+    });
+  });
+
+
+  app.get('/categories', function (req, res) {
 
     Category.find(function (err, categories) {
       if (err)
@@ -69,6 +82,58 @@ module.exports = function(app)
         res.send(err);
 
       res.json(card);
+    });
+  });
+
+  app.get('/orders/:user_id', function (req, res) {
+
+    var user_id = req.params.user_id;
+
+    var filter = {user_id: user_id}
+
+    Order.find(filter, function (err, order) {
+      if (err)
+        res.send(err);
+
+      res.json(order);
+    });
+  });
+
+
+  app.post('/order', function(req, res)
+  {
+
+    Order.findOne({ 'user_id': req.body.user_id }, function (err, user) {
+      // In case of any error, return using the done method
+      if (err) {
+        console.log('Error in connection: ' + err);
+        res.send('Error in connection', 400);
+      }
+
+      else {
+
+        // create the order
+        var newOrder = new Order();
+        // set the user's local credentials
+        newOrder.user_id = req.body.user_id;
+        newOrder.address = req.body.address;
+        newOrder.mobile_no = req.body.mobile_no;
+        newOrder.phone_no = req.body.phone_no;
+        newOrder.status = req.body.status;
+        newOrder.items = req.body.items;
+        newOrder.total_bill = req.body.total_bill;
+        newOrder.date_of_order = req.body.date_of_order;
+
+        // save the order
+        newOrder.save(function (err, order) {
+          if (err) {
+            console.log('Error in Saving order: ' + err);
+            throw err;
+          }
+          console.log('Order Successful');
+          res.send(order);
+        });
+      }
     });
   });
 

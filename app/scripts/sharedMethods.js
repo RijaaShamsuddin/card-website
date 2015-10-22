@@ -16,18 +16,17 @@ app
   .factory('Category', function  ($resource) {
     return $resource('/categories');
 
+  })
+
+  .factory('cartItems',function(){
+    return {
+      orders: [],
+      add: function(item) {
+        this.orders.push(item)
+      }
+
+    }
+    //return this.orders;
   });
 
 
-
-/*
-angular.module('airlineServices', ['ngResource'])
-  .factory('Airport', function  ($resource) {
-    return $resource('/airports/:airportCode');
-  })
-  .factory('Flights', function  ($resource) {
-    return $resource('/flights');
-  })
-  .factory('Reservations', function  ($resource) {
-    return $resource('/reservations');
-  });*/

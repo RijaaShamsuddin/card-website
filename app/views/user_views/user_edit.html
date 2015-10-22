@@ -1,4 +1,4 @@
-<link href="../styles/main.css" rel="stylesheet">
+<link href="../../styles/main.css" rel="stylesheet">
 <div class="container">
 
   <div class="row">
@@ -11,10 +11,10 @@
         <hr>
 
         <form class="form-signin" method="post">
-          <!--<h2 class="form-signin-heading">Please sign up</h2>-->
+
 
           <label for="inputFname" class="sr-only">First Name</label>
-          <input type="text" id="inputFname" class="form-control" placeholder={{user.firstName}} required ng-model="data.firstName">
+          <input type="text" id="inputFname" class="form-control" required ng-model="data.firstName">
           <br>
           <label for="input_lname" class="sr-only">Last Name</label>
           <input type="text" id="input_lname" class="form-control" placeholder={{user.lastName}} required ng-model="data.lastName">
