@@ -4,6 +4,8 @@
 
 app.controller('aboutCtrl', function ($scope, $http, $location, sharedMethods, Category){
 
+
+
   $scope.user = JSON.parse(localStorage.getItem('user'))
   console.log($scope.user)
   if(!$scope.user)
@@ -17,6 +19,12 @@ app.controller('aboutCtrl', function ($scope, $http, $location, sharedMethods, C
   $scope.fetchCategoryWiseCards = function(category){
     $location.path('/gallery/'+category);
   }
+
+ $scope.orders = JSON.parse(localStorage.getItem('cartItems'))
+  console.log($scope.orders)
+
+
+
 
 
 

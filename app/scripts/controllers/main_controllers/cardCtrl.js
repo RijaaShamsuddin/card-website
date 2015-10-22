@@ -2,9 +2,7 @@
  * Created by Hira on 9/16/2015.
  */
 
-
-
-app.controller('cardCtrl', function ($scope, $http, $location, sharedMethods, Category, $routeParams){
+app.controller('cardCtrl', function ($scope, $http, $location, sharedMethods, Category, $routeParams, cartItems){
 
   $scope.user = JSON.parse(localStorage.getItem('user'))
   console.log($scope.user)
@@ -12,9 +10,11 @@ app.controller('cardCtrl', function ($scope, $http, $location, sharedMethods, Ca
   {
     $location.path('/');
   }
-
   $scope.logout = sharedMethods.logout;
   $scope.categories = Category.query();
+  $scope.fetchCategoryWiseCards = function(category){
+    $location.path('/gallery/'+category);
+  }
 
   $scope.cardId = $routeParams._id;
   console.log($scope.cardId);
@@ -30,7 +30,18 @@ app.controller('cardCtrl', function ($scope, $http, $location, sharedMethods, Ca
       console.log(response)
     });
 
+  $scope.addItem = function(card) {
+    console.log("in the addItem method");
+    cartItems.add(card);
+    console.log(cartItems.orders)
+  }
 
+
+  $scope.order = function(){
+    $scope.addItem($scope.card);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems.orders));
+    console.log(JSON.stringify(cartItems.orders));
+  }
 
 });
 

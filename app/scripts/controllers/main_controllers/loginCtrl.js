@@ -11,6 +11,7 @@
 app.controller('LoginCtrl', function ($scope, $http, $location, sharedMethods)
   {
 
+
     $scope.errorMessage = '';
     $scope.data = {
       email:'',
@@ -36,6 +37,7 @@ app.controller('LoginCtrl', function ($scope, $http, $location, sharedMethods)
               password: ''
             };
           });
+
 
       }
 
