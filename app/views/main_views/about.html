@@ -23,7 +23,7 @@
         <li>
           <a >Our Designs &#9662;</a>
           <ul class="dropdown">
-            <li><a  ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
+            <li><a href="" ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
           </ul>
         </li>
 
@@ -39,7 +39,7 @@
       <span class="glyphicon glyphicon-user"></span><strong>Hi, {{user.userName}}! &#9662;</strong>
       <ul class="dropdown">
         <li><a href="#/user_profile" >My Profile</a></li>
-        <li><a href="#" >My Orders</a></li>
+        <li><a href="" ng-click ='fetchOrders(user._id)'>My Orders</a></li>
         <li><a href="#/" ng-click="logout()">Log Out</a></li>
       </ul>
     </div>
@@ -92,7 +92,6 @@
 
           We are here to change that with a tool that makes design simple for everyone.</p>
       </div>
-      <button class="btn btn-primary btn-lg" type="submit" ng-click="total()">Submit</button>
       <div class="clearfix"></div>
     </div>
   </div>

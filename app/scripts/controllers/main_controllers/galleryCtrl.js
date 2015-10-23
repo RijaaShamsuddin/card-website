@@ -49,7 +49,11 @@ app.controller('galleryCtrl', function ($scope, $http, $location, sharedMethods,
       $location.path('/cards/'+card);
     }
 
-    $http.get('/cards')
+    $scope.fetchOrders = function(user_id){
+      $location.path('/orders/'+user_id);
+    }
+
+  /*  $http.get('/cards')
        .then(function(response) {
          //console.log(response);
          $scope.cards = response.data;
@@ -58,7 +62,7 @@ app.controller('galleryCtrl', function ($scope, $http, $location, sharedMethods,
        }, function(err) {
          // something went wrong
          console.log(err);
-       });
+       });*/
 
 
     });

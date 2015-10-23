@@ -26,6 +26,10 @@ app.controller('user_editCtrl', function ($scope, $http, $location, sharedMethod
   $scope.logout = sharedMethods.logout;
   $scope.categories = Category.query();
 
+  $scope.fetchOrders = function(user_id){
+    $location.path('/orders/'+user_id);
+  }
+
   $scope.fetchCategoryWiseCards = function(category){
     $location.path('/gallery/'+category);
   }

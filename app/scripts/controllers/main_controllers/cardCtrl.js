@@ -30,6 +30,10 @@ app.controller('cardCtrl', function ($scope, $http, $location, sharedMethods, Ca
       console.log(response)
     });
 
+  $scope.fetchOrders = function(user_id){
+    $location.path('/orders/'+user_id);
+  }
+
   $scope.addItem = function(card) {
     console.log("in the addItem method");
     cartItems.add(card);

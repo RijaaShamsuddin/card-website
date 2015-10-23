@@ -20,7 +20,11 @@ app.controller('aboutCtrl', function ($scope, $http, $location, sharedMethods, C
     $location.path('/gallery/'+category);
   }
 
- $scope.orders = JSON.parse(localStorage.getItem('cartItems'))
+  $scope.fetchOrders = function(user_id){
+    $location.path('/orders/'+user_id);
+  }
+
+  $scope.orders = JSON.parse(localStorage.getItem('cartItems'))
   console.log($scope.orders)
 
 
