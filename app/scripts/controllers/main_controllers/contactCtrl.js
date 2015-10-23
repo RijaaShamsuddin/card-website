@@ -18,6 +18,10 @@ app.controller('contactCtrl', function ($scope, $http, $location, sharedMethods,
     $location.path('/gallery/'+category);
   }
 
+  $scope.fetchOrders = function(user_id){
+    $location.path('/orders/'+user_id);
+  }
+
 
 
 });

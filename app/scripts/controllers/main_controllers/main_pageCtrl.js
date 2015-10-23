@@ -28,7 +28,9 @@ app.controller('main_pageCtrl', function ($scope, $http, $location, sharedMethod
   });*/
 }
 
-  console.log($scope.categories)
+  $scope.fetchOrders = function(user_id){
+    $location.path('/orders/'+user_id);
+  }
 
 
 /*  $http.get('/categories')

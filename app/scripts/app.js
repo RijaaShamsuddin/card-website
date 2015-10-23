@@ -65,14 +65,20 @@ var app = angular
         templateUrl: '../views/order_views/order_details.html',
         controller: 'orderCtrl'
       })
-      .when('/order',{
+      .when('/cart',{
         templateUrl: '../views/order_views/cart.html',
         controller: 'cartCtrl'
       })
+      .when('/orders/:user_id', {
+        templateUrl: '../views/user_views/user_orders.html',
+        controller: 'user_ordersCtrl'
+      })
       .when ('/admin',{
         templateUrl:'views/admin.html'
-
     })
+      .when('/checkout',{
+        templateUrl:'../views/order_views/finish_shopping.html'
+      })
       .otherwise({
         redirectTo: '/'
       });

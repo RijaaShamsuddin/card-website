@@ -40,7 +40,7 @@
       <span class="glyphicon glyphicon-user"></span><strong> Hi, {{user.userName}}! &#9662;</strong>
       <ul class="dropdown">
         <li><a href="#/user_profile" >My Profile</a></li>
-        <li><a href="#" >My Orders</a></li>
+        <li><a href="" ng-click ='fetchOrders(user._id)'>My Orders</a></li>
         <li><a href="#/" ng-click="logout()">Log Out</a></li>
       </ul>
     </div>
@@ -72,6 +72,20 @@
 
 
 </div>
+
+      <div ng-if="userOrders" class="info">
+        <hr>
+        <h3 class="intro-text">Order Information</h3><button type="button" class="btn btn-default btn-sm" ng-click="fetchUser(user._id)">
+        <span class="glyphicon glyphicon-edit"></span> Edit
+      </button>
+
+        <hr>
+        <p>{{userOrders[0].address}}</p>
+        <p>{{userOrders[0].mobile_no}}</p>
+        <p>{{userOrders[0].phone_no}}</p>
+
+
+      </div>
     </div>
   </div>
 </div>

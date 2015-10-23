@@ -23,6 +23,11 @@ app.controller('orderCtrl', function ($scope, $http, $location, sharedMethods, C
   $scope.orders = JSON.parse(localStorage.getItem('cartItems'))
   console.log($scope.orders)
 
+  $scope.fetchOrders = function(user_id){
+    $location.path('/orders/'+user_id);
+  }
+
+
   $scope.errorMessage = '';
 
 
