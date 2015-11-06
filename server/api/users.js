@@ -21,6 +21,26 @@ module.exports = function(app)
   });
 
 
+  app.get('/users', function (req, res) {
+
+    User.find(function (err, users) {
+      if (err)
+        res.send(err);
+
+      res.json(users);
+    });
+  });
+
+  app.get('/orders', function (req, res) {
+
+    Order.find(function (err, orders) {
+      if (err)
+        res.send(err);
+
+      res.json(orders);
+    });
+  });
+
   app.get('/categories', function (req, res) {
 
     Category.find(function (err, categories) {
@@ -138,6 +158,8 @@ module.exports = function(app)
   });
 
 
+
+
   app.post('/user', function(req, res)
   {
     console.log(req.body.email);
@@ -240,7 +262,7 @@ module.exports = function(app)
 
 
 
-  app.get('/users',  function(req, res)
+ /* app.get('/users',  function(req, res)
   {
     User.find().exec(function(err, users){
       if (users.length)
@@ -253,7 +275,7 @@ module.exports = function(app)
       }
 
     });
-  });
+  });*/
 
   app.put('/user/:_id',  function(req, res)
   {

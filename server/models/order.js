@@ -9,7 +9,7 @@ var orderSchema = new Schema( {
   user_id : {type: String},
   address : {type: String, allowNull: false},
   mobile_no : {type: String, allowNull: false},
-  phone_no: {type: String},
+  phone_no: {type: String, allowNull: false},
   total_bill: {type: Number},
   items: [],
   status: {type: String},

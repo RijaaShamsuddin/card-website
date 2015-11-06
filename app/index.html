@@ -13,6 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='bower_components/angular-loading-bar/build/loading-bar.min.css' rel='stylesheet' type='text/css' media='all' />
 
     <!-- Custom CSS -->
     <link href="styles/main.css" rel="stylesheet">
@@ -32,8 +33,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="brand">Banwalo</div>
-    <!--<div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>-->
+    <div class="brand">Banwalo
+    <p class="delivery">
+      FREE<br>Delivery!</p>
+    </div>
+    <div class="address-bar" style="text-align: center">For Queries call +92 3443045128</div>
 
     <!--&lt;!&ndash; Navigation &ndash;&gt;
     <nav class="navbar navbar-default" role="navigation">
@@ -112,6 +116,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script type='text/javascript' src='bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
 
 
     <!-- endbower -->
@@ -132,6 +137,9 @@
         <script src="scripts/controllers/order_controllers/orderCtrl.js"></script>
         <script src="scripts/controllers/order_controllers/cartCtrl.js"></script>
         <script src="scripts/controllers/user_controllers/user_ordersCtrl.js"></script>
+        <script src="scripts/controllers/admin_controllers/admin_orderCtrl.js"></script>
+        <script src="scripts/controllers/admin_controllers/admin_usersCtrl.js"></script>
+        <script src="scripts/controllers/admin_controllers/adminCtrl.js"></script>
         <!-- endbuild -->
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -143,7 +151,12 @@
     <script>
       $('.carousel').carousel({
         interval: 5000 //changes the speed
-      })
+      });
+
+        $('#hover-drop').hover(function() {
+          $(this).dropdown('toggle');
+        });
+
     </script>
 
 

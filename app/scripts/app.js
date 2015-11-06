@@ -11,6 +11,7 @@
  */
 var app = angular
   .module('muocApp', [
+    'angular-loading-bar',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -73,12 +74,22 @@ var app = angular
         templateUrl: '../views/user_views/user_orders.html',
         controller: 'user_ordersCtrl'
       })
-      .when ('/admin',{
-        templateUrl:'views/admin.html'
-    })
+
       .when('/checkout',{
         templateUrl:'../views/order_views/finish_shopping.html'
       })
+
+      .when('/admin_order',{
+        templateUrl: '../views/admin_views/admin_order.html',
+        controller: 'admin_orderCtrl'
+      })
+
+      .when('/admin_users',{
+        templateUrl: '../views/admin_views/admin_users.html',
+        controller: 'admin_usersCtrl'
+      })
+
+
       .otherwise({
         redirectTo: '/'
       });
