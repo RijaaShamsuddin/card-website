@@ -4,8 +4,10 @@
 
 app.controller('cardCtrl', function ($scope, $http, $location, sharedMethods, Category, $routeParams, cartItems){
 
-  $scope.user = JSON.parse(localStorage.getItem('user'))
-  console.log($scope.user)
+  $scope.message = '';
+  $scope.quantity = {count: '1' };
+
+  $scope.user = JSON.parse(localStorage.getItem('user'));
   if(!$scope.user)
   {
     $location.path('/');
@@ -17,12 +19,10 @@ app.controller('cardCtrl', function ($scope, $http, $location, sharedMethods, Ca
   }
 
   $scope.cardId = $routeParams._id;
-  console.log($scope.cardId);
 
   $http.get('/card/'+$scope.cardId)
     .then(function(response) {
       $scope.card = response.data;
-      console.log($scope.card);
       // invalid response
 
     }, function(response) {
@@ -34,17 +34,12 @@ app.controller('cardCtrl', function ($scope, $http, $location, sharedMethods, Ca
     $location.path('/orders/'+user_id);
   }
 
-  $scope.addItem = function(card) {
-    console.log("in the addItem method");
-    cartItems.add(card);
-    console.log(cartItems.orders)
-  }
-
-
   $scope.order = function(){
-    $scope.addItem($scope.card);
-    localStorage.setItem('cartItems', JSON.stringify(cartItems.orders));
-    console.log(JSON.stringify(cartItems.orders));
+    var items = cartItems.getAllCartItems();
+    var newCard = {quantity : $scope.quantity.count, card: $scope.card[0]};
+    items.push(newCard);
+    cartItems.saveCardItems(items);
+    $scope.message = 'Card Added in cart';
   }
 
 });

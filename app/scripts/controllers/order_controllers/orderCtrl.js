@@ -2,7 +2,7 @@
  * Created by Hira on 10/22/2015.
  */
 
-app.controller('orderCtrl', function ($scope, $http, $location, sharedMethods, Category){
+app.controller('orderCtrl', function ($scope, $http, $location, sharedMethods, Category,cartItems){
 
 
 
@@ -20,8 +20,8 @@ app.controller('orderCtrl', function ($scope, $http, $location, sharedMethods, C
     $location.path('/gallery/'+category);
   }
 
-  $scope.orders = JSON.parse(localStorage.getItem('cartItems'))
-  console.log($scope.orders)
+  $scope.orders = cartItems.getAllCartItems();
+  console.log($scope.orders);
 
   $scope.fetchOrders = function(user_id){
     $location.path('/orders/'+user_id);
@@ -31,18 +31,15 @@ app.controller('orderCtrl', function ($scope, $http, $location, sharedMethods, C
   $scope.errorMessage = '';
 
 
-  $scope.total = function() {
+
+
+  $scope.totalPrice = function(){
     $scope.sum = 0;
-    angular.forEach($scope.orders, function (options) {
-      angular.forEach(options, function (value) {
-        $scope.sum += value.price;
-
-      })
-    })
-    console.log($scope.sum)
-  }
-
-  $scope.total();
+    $scope.orders.forEach(function(order, i){
+      $scope.sum+= (order.card.price * parseInt(order.quantity));
+    });
+  };
+  $scope.totalPrice();
 
 
   $scope.data = {
@@ -53,36 +50,37 @@ app.controller('orderCtrl', function ($scope, $http, $location, sharedMethods, C
     total_bill: $scope.sum,
     user_id: $scope.user._id,
     status: 'Unfulfilled',
-    date_of_order: ''
+    date_of_order: Date.now()
   }
 
   $scope.order = function() {
 
 
     $http.post('/order', $scope.data)
-        .success(function (order) {
-          $scope.errorMessage = '';
-          console.log('Order created')
-          console.log($scope.data)
+      .success(function (order) {
+        $scope.errorMessage = '';
+        cartItems.clearShoppingCart();
+        $location.path('/checkout');
 
 
-        })
-        .error(function (err) {
-          console.log('Error')
-          $scope.errorMessage = 'Something went wrong';
-          $scope.data = {
-            address:'',
-            mobile_no:'',
-            phone_no:'',
-            items: $scope.orders,
-            user_id: $scope.user._id,
-            status: 'Unfulfilled'
-          }
-
-        });
+        console.log('Order created')
+        console.log($scope.data)
 
 
+      })
+      .error(function (err) {
+        console.log('Error')
+        $scope.errorMessage = 'Something went wrong';
+        $scope.data = {
+          address:'',
+          mobile_no:'',
+          phone_no:'',
+          items: $scope.orders,
+          user_id: $scope.user._id,
+          status: 'Unfulfilled'
+        }
 
+      });
   }
 
 });

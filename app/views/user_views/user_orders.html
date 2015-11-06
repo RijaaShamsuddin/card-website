@@ -17,10 +17,16 @@
         <li>
           <a href="#/main_page">Home</a>
         </li>
-        <li>
-          <a >Our Designs &#9662;</a>
-          <ul class="dropdown">
-            <li><a href="" ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!-- <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs <b class="caret"></b></a>
+               <!--<a >Our Designs &#9662;</a>
+               <ul class="dropdown">
+               <ul class="dropdown-menu">-->
+            <li><a  ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
           </ul>
         </li>
 
@@ -30,15 +36,28 @@
         <li>
           <a href="#/contact">Contact</a>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/cart">View Cart</a></li>
+            <li><a href="#/order">Checkout</a></li>
+          </ul>
+        </li>
+        <!--</div>
+        <!--<div id="greeting" ng-if="user" style="float:right">-->
+        <li class="dropdown" ng-if="user">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user"></span><strong> Hi, {{user.userName}}!</strong>
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li ng-if="user">-->
+            <li><a href="#/user_profile" >My Profile</a></li>
+            <li><a href="" ng-click ='fetchOrders(user._id)'>My Orders</a></li>
+            <li><a href="#/" ng-click="logout()">Log Out</a></li>
       </ul>
-    </div>
-    <div id="greeting" ng-if="user" style="float:right">
-      <span class="glyphicon glyphicon-user"></span><strong>Hi, {{user.userName}}! &#9662;</strong>
-      <ul class="dropdown">
-        <li><a href="#/user_profile" >My Profile</a></li>
-        <li><a href="" ng-click ='fetchOrders(user._id)'>My Orders</a></li>
-        <li><a href="#/" ng-click="logout()">Log Out</a></li>
-      </ul>
+    </ul>
     </div>
     <!-- /.navbar-collapse -->
   </div>
@@ -56,11 +75,29 @@
           <strong>Orders</strong>
         </h2>
         <hr>
-        <p ng-show="errorMessage.length" style="color: red; text-align:." > {{errorMessage}}</p>
+
+        <!--<p ng-show="errorMessage.length" style="color: red; text-align:center" > {{errorMessage}}</p>-->
+
      <div ng-repeat="orders in userOrders">
-       <p>{{orders.status}}</p>
-       <p>{{orders.total_bill}}</p>
-       <p>{{orders.items}}</p>
+
+       <div class="col-sm-6 text-center">
+         <h3>Items</h3>
+         <p style="word-wrap: break-word">{{orders.items}}</p>
+       </div>
+<!--
+       <div class="col-sm-4 text-center">
+         <h3>Date</h3>
+         <p>{{orders.date_of_order}}</p>
+       </div>-->
+
+       <div class="col-sm-6 text-center">
+         <h3>Total Bill</h3>
+         <p>{{orders.total_bill}}</p>
+       </div>
+
+       <div class="clearfix"></div>
+
+
        </div>
 
      </div>
@@ -68,4 +105,4 @@
      </div>
     </div>
   </div>
-</div>
+
