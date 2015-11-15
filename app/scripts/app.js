@@ -54,7 +54,7 @@ var app = angular
         templateUrl: '../views/user_views/user_profile.html',
         controller: 'user_profileCtrl'
       })
-      .when('/gallery/:category_id', {
+      .when('/gallery/:category_name', {
         templateUrl: '../views/main_views/gallery.html',
         controller: 'galleryCtrl'
       })
