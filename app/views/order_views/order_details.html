@@ -1,0 +1,108 @@
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+      <a class="navbar-brand" href="../../index.html">Banwalo</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#/main_page">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!-- <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs <b class="caret"></b></a>
+               <!--<a >Our Designs &#9662;</a>
+               <ul class="dropdown">
+               <ul class="dropdown-menu">-->
+            <li><a  ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#/about">About US</a>
+        </li>
+        <li>
+          <a href="#/contact">Contact</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/cart">View Cart</a></li>
+            <li><a href="#/order">Checkout</a></li>
+          </ul>
+        </li>
+        <!--</div>
+        <!--<div id="greeting" ng-if="user" style="float:right">-->
+        <li class="dropdown" ng-if="user">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user"></span><strong> Hi, {{user.userName}}!</strong>
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li ng-if="user">-->
+            <li><a href="#/user_profile" >My Profile</a></li>
+            <li><a href="" ng-click ='fetchOrders(user._id)'>My Orders</a></li>
+            <li><a href="#/" ng-click="logout()">Log Out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+
+  <!-- /.container -->
+</nav>
+<div class="container">
+
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12 text-center">
+        <hr>
+        <h2 class="intro-text text-center">Order
+          <strong>Form</strong>
+        </h2>
+        <hr>
+
+        <form name = "myForm" class="form" method="post">
+
+
+          <label for="input_address" class="sr-only">Address</label>
+          <input name="address" type="text" id="input_address" class="form-control" placeholder='Address'required ng-model="data.address">
+          <span ng-show="myForm.address.$dirty && myForm.address.$invalid"></span>
+          <span ng-show="myForm.address.$error.required">Address is required &nbsp;</span>
+
+          <br>
+          <label for="input_mobile" class="sr-only">Mobile Number</label>
+          <input name="mobile_no" type="number" id="input_mobile" class="form-control" placeholder='0123-1234567' required ng-model="data.mobile_no"
+               ng-minlength="11">
+            <span ng-show="myForm.mobile_no.$dirty && myForm.mobile_no.$invalid"></span>
+              <span ng-show="myForm.mobile_no.$error.required">Mobile Number is required &nbsp;</span>
+          <br>
+          <label for="input_phone" class="sr-only">Phone Number</label>
+          <input type="number" id="input_phone" class="form-control" placeholder='0213-1234567'  ng-model="data.phone_no">
+          <br>
+
+         <button class="btn btn-primary btn-lg" type="submit" ng-click="order()"
+                 ng-disabled="myForm.$invalid">Confirm Order</button>
+
+
+          <p ng-show="errorMessage.length" style="color: red; text-align: center" > {{errorMessage}}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

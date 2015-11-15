@@ -2,13 +2,46 @@
  * Created by sohaib on 1/15/2015.
  */
 var mongoose = require('mongoose');
+var Admin = require('../models/admin');
+var Order = require('../models/order');
 var User = require('../models/user');
 var Category = require('../models/category');
 var Card = require('../models/card');
 
 module.exports = function(app)
 {
- app.get('/categories', function (req, res) {
+  app.get('/admin', function (req, res) {
+
+    Admin.find(function (err, admin) {
+      if (err)
+        res.send(err);
+
+      res.json(admin);
+    });
+  });
+
+
+  app.get('/users', function (req, res) {
+
+    User.find(function (err, users) {
+      if (err)
+        res.send(err);
+
+      res.json(users);
+    });
+  });
+
+  app.get('/orders', function (req, res) {
+
+    Order.find(function (err, orders) {
+      if (err)
+        res.send(err);
+
+      res.json(orders);
+    });
+  });
+
+  app.get('/categories', function (req, res) {
 
     Category.find(function (err, categories) {
       if (err)
@@ -27,6 +60,104 @@ module.exports = function(app)
       res.json(cards);
     });
   });
+
+  app.get('/:categoryId', function (req, res) {
+
+    var categoryId = req.params.categoryId; // GET THE CATEGORY ID FROM THE GET REQUEST
+
+    var filter = {_id: categoryId} // CREATE YOUR FILTER AS YOU WISH
+
+    Category.find(filter, function (err, categories) { //USE YOUR FILTER AS THE FIRST ARGUMENT OF THE FIND METHOD
+      if (err)
+        res.send(err);
+
+      res.json(categories);
+    });
+  });
+
+
+
+  app.get('/cards/:category_id', function (req, res) {
+
+    var category_id = req.params.category_id; // GET THE CATEGORY _ID FROM THE GET REQUEST
+
+    var filter = {category_id: category_id} // CREATE YOUR FILTER AS YOU WISH
+
+    Card.find(filter, function (err, cards) { //USE YOUR FILTER AS THE FIRST ARGUMENT OF THE FIND METHOD
+      if (err)
+        res.send(err);
+
+      res.json(cards);
+    });
+  });
+
+  app.get('/card/:_id', function (req, res) {
+
+    var _id = req.params._id; // GET THE CATEGORY _ID FROM THE GET REQUEST
+
+    var filter = {_id: _id} // CREATE YOUR FILTER AS YOU WISH
+
+    Card.find(filter, function (err, card) { //USE YOUR FILTER AS THE FIRST ARGUMENT OF THE FIND METHOD
+      if (err)
+        res.send(err);
+
+      res.json(card);
+    });
+  });
+
+  app.get('/orders/:user_id', function (req, res) {
+
+    var user_id = req.params.user_id;
+
+    var filter = {user_id: user_id}
+
+    Order.find(filter, function (err, order) {
+      if (err)
+        res.send(err);
+
+      res.json(order);
+    });
+  });
+
+
+  app.post('/order', function(req, res)
+  {
+
+    Order.findOne({ 'user_id': req.body.user_id }, function (err, user) {
+      // In case of any error, return using the done method
+      if (err) {
+        console.log('Error in connection: ' + err);
+        res.send('Error in connection', 400);
+      }
+
+      else {
+
+        // create the order
+        var newOrder = new Order();
+        // set the user's local credentials
+        newOrder.user_id = req.body.user_id;
+        newOrder.address = req.body.address;
+        newOrder.mobile_no = req.body.mobile_no;
+        newOrder.phone_no = req.body.phone_no;
+        newOrder.status = req.body.status;
+        newOrder.items = req.body.items;
+        newOrder.total_bill = req.body.total_bill;
+        newOrder.date_of_order = req.body.date_of_order;
+
+        // save the order
+        newOrder.save(function (err, order) {
+          if (err) {
+            console.log('Error in Saving order: ' + err);
+            throw err;
+          }
+          console.log('Order Successful');
+          res.send(order);
+        });
+      }
+    });
+  });
+
+
 
 
   app.post('/user', function(req, res)
@@ -111,11 +242,11 @@ module.exports = function(app)
   });
 
 
-  app.get('/user/:username',  function(req, res)
+  app.get('/user/:userName',  function(req, res)
   {
-    if (req.params.username)
+    if (req.params.userName)
     {
-      User.findOne({username : req.params.username},
+      User.find({userName : req.params.userName},
         function(err, user) {
           if (err)
             res.json({error:err});
@@ -129,7 +260,9 @@ module.exports = function(app)
     }
   });
 
-  app.get('/users',  function(req, res)
+
+
+ /* app.get('/users',  function(req, res)
   {
     User.find().exec(function(err, users){
       if (users.length)
@@ -142,20 +275,19 @@ module.exports = function(app)
       }
 
     });
-  });
+  });*/
 
-
-  app.put('/user/:username',  function(req, res)
+  app.put('/user/:_id',  function(req, res)
   {
-    if (req.params.username)
+    if (req.params._id)
     {
-      User.findOne({username : req.params.username}, function(err, user) {
+      User.findOne({_id : req.params._id}, function(err, user) {
         if (err) res.send('User does not exist', 400);
         else
         {
           var obj = updatedUser(req.body);
           delete obj._id;
-          User.update({username : req.params.username}, obj, function(err, user)
+          User.update({_id : req.params._id}, obj, function(err, user)
           {
             if (err)
             {
