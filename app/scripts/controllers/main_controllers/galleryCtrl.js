@@ -31,10 +31,10 @@ app.controller('galleryCtrl', function ($scope, $http, $location, sharedMethods,
      }
 
 
-    $scope.catId = $routeParams.category_id;
-    console.log($scope.catId);
+    $scope.catName = $routeParams.category_name;
+    console.log($scope.catName);
 
-  $http.get('/cards/'+$scope.catId)
+  $http.get('/cards/'+$scope.catName)
      .then(function(response) {
      $scope.cards = response.data;
      console.log(response);
