@@ -6,15 +6,6 @@ app.controller('user_editCtrl', function ($scope, $http, $location, sharedMethod
 { $scope.message = '';
   $scope.errorMessage = '';
 
-  $scope.data = {
-    firstName:'',
-    lastName:'',
-    userName:'',
-    email:'',
-    password: '',
-    confirmPassword:''
-  }
-
   $scope.user = JSON.parse(localStorage.getItem('user'))
   console.log($scope.user)
   if(!$scope.user)
@@ -40,21 +31,14 @@ app.controller('user_editCtrl', function ($scope, $http, $location, sharedMethod
 
 
   $scope.update = function() {
-    if ($scope.data.password != $scope.data.confirmPassword)
-    {
-      $scope.message = 'Passwords do not match';
 
-
-    }
-
-    else
-    {
       $scope.message = '';
-      $http.put('/user/'+$scope.userId, $scope.data)
+      $http.put('/user/'+$scope.userId, $scope.user)
         .success(function (user) {
           $scope.errorMessage = '';
           console.log('User created')
-          $location.path('/')
+          localStorage.setItem("user", JSON.stringify(user));
+          $location.path('/main_page')
 
         })
         .error(function (err) {
@@ -65,7 +49,7 @@ app.controller('user_editCtrl', function ($scope, $http, $location, sharedMethod
 
     }
 
-  }
+
 
 
 

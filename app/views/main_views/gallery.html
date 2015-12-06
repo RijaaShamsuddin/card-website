@@ -90,7 +90,7 @@
         <ul class="products rig columns-3">
            <li class="imagebox" ng-repeat="card in cards">
 
-             <a href="" ng-click= 'fetchCard(card._id)' > <img class="thumbnail" src="images/{{card.url}}.jpg"  alt="{{card.name}}" /></a>
+             <a href="" ng-click= 'fetchCard(card._id)' > <img class="thumbnail" src="{{card.url}}"  alt="{{card.name}}" /></a>
             <!--<input type="button" value="Order Now" onClick=window.open('https://docs.google.com/forms/d/1Kax7XoiSLbxtz1KlHaWIskSwdXK2ARgl_UPt4Cw2KN4/viewform?c=0&w=1')>-->
              <p style="color: #080800">Rs.{{card.price}}</p>
              <h3>{{card.name}}</h3>
