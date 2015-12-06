@@ -9,38 +9,46 @@
  */
 
 app.controller('LoginCtrl', function ($scope, $http, $location, sharedMethods)
-  {
+{
 
 
-    $scope.errorMessage = '';
-    $scope.data = {
-      email:'',
-      password: ''
-    }
+  $scope.errorMessage = '';
+  $scope.data = {
+    email:'',
+    password: ''
+  }
 
-    $scope.logout = sharedMethods.logout;
-
-
-    $scope.login = function() {
-
-        $http.post('/login', $scope.data)
-          .success(function (user) {
-            $scope.errorMessage = '';
-            localStorage.setItem("user", JSON.stringify(user));
-            console.log(user)
-            $location.path('/main_page')
-          })
-          .error(function (err) {
-            $scope.errorMessage = 'Please enter valid email and password!!';
-            $scope.data = {
-              email:'',
-              password: ''
-            };
-          });
+  $scope.logout = sharedMethods.logout;
 
 
-      }
+  $scope.login = function() {
+
+    $http.post('/login', $scope.data)
+      .success(function (user) {
+        $scope.errorMessage = '';
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log(user)
+        if(user.usertype=='admin')
+        {
+          $location.path('/AdminPanel')
+        }
+        else
+        {
+          $location.path('/main_page')
+        }
+
+      })
+      .error(function (err) {
+        $scope.errorMessage = 'Please enter valid email and password!!';
+        $scope.data = {
+          email:'',
+          password: ''
+        };
+      });
+
+
+  }
 
 
 
-  });
+});

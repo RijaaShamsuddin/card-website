@@ -2,7 +2,7 @@
  * Created by sohaib on 1/15/2015.
  */
 var mongoose = require('mongoose');
-var Admin = require('../models/admin');
+
 var Order = require('../models/order');
 var User = require('../models/user');
 var Category = require('../models/category');

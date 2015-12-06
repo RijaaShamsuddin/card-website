@@ -16,12 +16,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="#/main_page">Home</a>
-        </li>
+
+
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <!-- <li class="dropdown">
@@ -33,10 +32,13 @@
           </ul>
         </li>
         <li>
-          <a href="#/about">About US</a>
+          <a href="#/admin_order">Orders</a>
         </li>
         <li>
-          <a href="#/contact">Contact</a>
+          <a href="#/admin_users">Users</a>
+        </li>
+        <li>
+          <a href="#/">Log Out</a>
         </li>
 
 
@@ -111,3 +113,10 @@
     </div>
   </div>
 </div>
+<script>
+
+  $('#hover-drop').hover(function() {
+    $(this).dropdown('toggle');
+  });
+
+</script>

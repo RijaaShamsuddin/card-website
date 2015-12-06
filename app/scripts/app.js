@@ -79,6 +79,11 @@ var app = angular
         templateUrl:'../views/order_views/finish_shopping.html'
       })
 
+        .when('/AdminPanel',{
+          templateUrl:'../views/admin_views/AdminPanel.html',
+          controller:'AdminPanelCtrl'
+        }
+    )
       .when('/admin_order',{
         templateUrl: '../views/admin_views/admin_order.html',
         controller: 'admin_orderCtrl'
@@ -87,6 +92,14 @@ var app = angular
       .when('/admin_users',{
         templateUrl: '../views/admin_views/admin_users.html',
         controller: 'admin_usersCtrl'
+      })
+      .when('/admin_category',{
+        templateUrl:'../views/admin_views/admin_category.html',
+        controller:'admin_categoryCtrl'
+      })
+      .when('admin_card',{
+        templateUrl:'../views/admin_views/admin_card.html',
+        controller:'admin_cardCtrl'
       })
 
 
