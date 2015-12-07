@@ -11,7 +11,10 @@ var Card = require('../models/card');
 
 module.exports = function(app,cloudinary)
 {
-  app.post('/uploadimage', function (req, res) {
+  app.post('/uploadimage', function (req, res)
+  {
+    console.log(req.body.img)
+    console.log(cloudinary)
     cloudinary.uploader.upload(req.body.img)
       .then(function (image) {
         res.send(image);
@@ -381,8 +384,8 @@ module.exports = function(app,cloudinary)
   /* Delete Category */
   app.delete('/deleteCategory/:name', function(req, res)
   {
-    if (req.params.name == req.category.name)
-    {
+
+
       Category.findOne({name : req.params.name}, function(err, category) {
         if (err) res.send('Category does not exist', 400);
         else
@@ -399,11 +402,7 @@ module.exports = function(app,cloudinary)
           });
         }
       });
-    }
-    else
-    {
-      res.send('Unauthorized Request', 400)
-    }
+
   });
 
 
@@ -477,7 +476,7 @@ module.exports = function(app,cloudinary)
         newCard.category_name = req.body.category_name ;
         newCard.name = req.body.name;
         newCard.price = req.body.price;
-        newCard.url = req.body.url;
+        newCard.url = req.body.imgurl;
 
 
 
@@ -531,8 +530,7 @@ module.exports = function(app,cloudinary)
   /* Delete Card */
   app.delete('/deleteCard/:_id', function(req, res)
   {
-    if (req.params._id == req.card._id)
-    {
+
       Card.findOne({_id : req.params._id}, function(err, card) {
         if (err) res.send('Card does not exist', 400);
         else
@@ -549,11 +547,8 @@ module.exports = function(app,cloudinary)
           });
         }
       });
-    }
-    else
-    {
-      res.send('Unauthorized Request', 400)
-    }
+
+
   });
 
 

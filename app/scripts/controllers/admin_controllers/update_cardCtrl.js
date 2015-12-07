@@ -26,6 +26,7 @@ app.controller('update_cardCtrl', function ($scope, $http, $location, sharedMeth
   $http.get('/card/'+$scope.cardId)
     .then(function(response) {
       $scope.card = response.data;
+      console.log($scope.card);
       // invalid response
 
     }, function(response) {
@@ -33,17 +34,17 @@ app.controller('update_cardCtrl', function ($scope, $http, $location, sharedMeth
       console.log(response)
     });
 
-  console.log($scope.card);
+
 
   $scope.updateCard = function() {
 
     $scope.message = '';
-    $http.put('/updateCard/'+$scope.cardId, $scope.card)
+    console.log($scope.card)
+    $http.put('/updateCard/'+$scope.cardId, $scope.card[0])
       .success(function (card) {
         $scope.errorMessage = '';
         console.log('Card Updated')
-        $location.path('/admin_category/'+$scope.card.category_name)
-
+        $location.path('/admin_category/'+$scope.card[0].category_name);
       })
       .error(function (err) {
         console.log('Error')
@@ -52,6 +53,28 @@ app.controller('update_cardCtrl', function ($scope, $http, $location, sharedMeth
       });
 
   }
+
+  $scope.delete = function() {
+
+    $http.delete('/deleteCard/'+$scope.cardId)
+
+      .success(function (card) {
+        $scope.errorMessage = '';
+        console.log('Card deleted')
+        $location.path('/admin_category/'+$scope.card[0].category_name)
+
+
+
+      })
+
+      .error(function (err) {
+        console.log('Error')
+
+      });
+
+  }
+
+
 
 
 });

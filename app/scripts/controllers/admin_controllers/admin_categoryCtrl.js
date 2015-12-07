@@ -62,20 +62,43 @@ app.controller('admin_categoryCtrl', function ($scope, $http, $location, sharedM
 
   $scope.update = function() {
 
-    $http.put('/updateCategory/'+$scope.catName)
+    $http.put('/updateCategory/'+$scope.catName,{name:$scope.catName})
       .success(function (category) {
         $scope.errorMessage = '';
         console.log('category updated')
+        $location.path('/admin_category/'+$scope.catName)
 
-        $location.path('/AdminPanel')
+
 
       })
+
       .error(function (err) {
         console.log('Error')
 
       });
 
   }
+
+  $scope.delete = function() {
+
+    $http.delete('/deleteCategory/'+$scope.catName)
+      .success(function (category) {
+        $scope.errorMessage = '';
+        console.log('category deleted')
+        $location.path('/AdminPanel')
+
+
+
+      })
+
+      .error(function (err) {
+        console.log('Error')
+
+      });
+
+  }
+
+
 
 
 });

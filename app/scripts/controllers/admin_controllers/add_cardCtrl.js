@@ -70,7 +70,7 @@ app.controller('add_cardCtrl', function ($scope, $http, $location, sharedMethods
           img: reader.result
         })
           .success(function(res) {
-            fileInput.value = "";
+            $scope.data.imgurl=res.url
             console.log(res);
 
           })
