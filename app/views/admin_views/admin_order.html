@@ -23,12 +23,14 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!-- <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs <b class="caret"></b></a>
-               <!--<a >Our Designs &#9662;</a>
-               <ul class="dropdown">
-               <ul class="dropdown-menu">-->
-            <li><a ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
+            <li><a ng-repeat="category in categories" onMouseOver="this.style.cursor='pointer'"
+                   ng-click='fetchCategoryWiseCards(category.name)'>{{category.name}}</a>
+              <form class="form-inline text-center" method="post">
+                <label for="category" class="sr-only">Category Name</label>
+                <input type="text" id="category" class="form-control" placeholder="Add New Category" required ng-model= data.name>
+                <button class="btn btn-primary" type="button" ng-click="createCategory()"> + </button>
+              </form>
+            </li>
           </ul>
         </li>
         <li>
@@ -68,7 +70,7 @@
 
           <div class="col-sm-2 ">
             <h4>Items</h4>
-            <p style="word-wrap: break-word">{{order.items}}</p>
+            <p style="word-wrap: break-word">{{order.items[0].card.name}}</p>
           </div>
 
 

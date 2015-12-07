@@ -6,10 +6,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var cardSchema = new Schema( {
-  category_id : String,
+  category_name : String,
   name : String,
   url: String,
-  price: Number,
+  price: Number
 
 });
 

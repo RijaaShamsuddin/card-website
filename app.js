@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var debug = require('debug')('louditadmin:server');
-
+var cloudinary = require('cloudinary');
 
 var app = express();
 
@@ -112,5 +112,14 @@ function onListening() {
   console.log('Listening on port: '+addr.port)
 }
 
-require('./server/api/users.js')(app);
+cloudinary.config
+({
+  cloud_name: 'myoc',
+  api_key: '776425248483828',
+  api_secret: 'O8kWRlcDg7DQJ8HL48Jyn6eESbM'
+
+
+});
+
+require('./server/api/users.js')(app ,cloudinary);
 module.exports = app;

@@ -21,12 +21,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!-- <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs <b class="caret"></b></a>
-               <!--<a >Our Designs &#9662;</a>
-               <ul class="dropdown">
-               <ul class="dropdown-menu">-->
-            <li><a  ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category.name)'>{{category.name}}</a></li>
+            <li><a  ng-repeat="category in categories"
+                    onMouseOver="this.style.cursor='pointer'"
+                    ng-click='fetchCategoryWiseCards(category.name)'>{{category.name}}</a></li>
           </ul>
         </li>
 
@@ -45,14 +42,11 @@
             <li><a href="#/order">Checkout</a></li>
           </ul>
         </li>
-        <!--</div>
-        <!--<div id="greeting" ng-if="user" style="float:right">-->
         <li class="dropdown" ng-if="user">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="glyphicon glyphicon-user"></span><strong> Hi, {{user.userName}}!</strong>
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!--<li ng-if="user">-->
             <li><a href="#/user_profile" >My Profile</a></li>
             <li><a href="" ng-click ='fetchOrders(user._id)'>My Orders</a></li>
             <li><a href="#/" ng-click="logout()">Log Out</a></li>
@@ -77,23 +71,11 @@
         </h2>
         <hr>
 
-        <!--<div class="col-sm-3 text-center">
-
-        </div>
-        <div class="col-sm-3 text-center">
-          <h3>Price</h3>
-        </div>
-        <div class="col-sm-3 text-center">
-          <h3>Quantity</h3>
-        </div>
-        <div class="col-sm-3 text-center">
-          <h3>Remove</h3>
-        </div>-->
 
         <div ng-repeat= "order in orders track by $index">
             <div class="col-sm-3 text-center">
               <h3 align="">Card</h3>
-              <img class="img-responsive" src="images/{{order.card.url}}.jpg"  alt="{{card.name}}" height="120px" width="120px"
+              <img class="img-responsive" src={{order.card.url}}  alt={{card.name}} height="120px" width="120px"
                 align="left"/>
               <h4><small>{{order.card.name}}</small></h4>
             </div>

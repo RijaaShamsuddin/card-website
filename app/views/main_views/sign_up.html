@@ -13,7 +13,6 @@
         <hr>
 
   <form class="form-signin" method="post">
-    <!--<h2 class="form-signin-heading">Please sign up</h2>-->
 
     <label for="inputFname" class="sr-only">First Name</label>
     <input type="text" id="inputFname" class="form-control" placeholder="First Name" required ng-model="data.firstName">
@@ -34,8 +33,6 @@
     <label for="inputCPassword" class="sr-only">Confirm Password</label>
     <input type="password" id="inputCPassword" class="form-control" placeholder="Confirm Password" required ng-model="data.confirmPassword">
 <br>
-   <!-- <label for="city" class="sr-only">City</label>
-    <input type="text" id="city" class="form-control" placeholder="City" required autofocus>-->
 
     <div class="checkbox">
       <br>
@@ -44,6 +41,8 @@
       </label>
     </div>
     <button class="btn btn-primary btn-lg" type="submit" ng-click="signUp()">Sign Up</button>
+    <br>
+    <br>
     <p>A user already?</p>
     <a style="font-size: large" href="#/">Log in Here!</a>
     <p style="color: red; text-align: center">

@@ -8,8 +8,20 @@ var User = require('../models/user');
 var Category = require('../models/category');
 var Card = require('../models/card');
 
-module.exports = function(app)
+
+module.exports = function(app,cloudinary)
 {
+  app.post('/uploadimage', function (req, res) {
+    cloudinary.uploader.upload(req.body.img)
+      .then(function (image) {
+        res.send(image);
+      })
+      .catch(function (err) {
+        if (err) {
+          res.send(err);
+        }
+      });
+  });
 
   /************************* USERS ***************************/
 

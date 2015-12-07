@@ -93,13 +93,23 @@ var app = angular
         templateUrl: '../views/admin_views/admin_users.html',
         controller: 'admin_usersCtrl'
       })
-      .when('/admin_category',{
+      .when('/admin_category/:category_name',{
         templateUrl:'../views/admin_views/admin_category.html',
         controller:'admin_categoryCtrl'
       })
-      .when('admin_card',{
+      .when('/admin_card',{
         templateUrl:'../views/admin_views/admin_card.html',
         controller:'admin_cardCtrl'
+      })
+
+      .when('/update_card/:_id',{
+        templateUrl:'../views/admin_views/update_card.html',
+        controller:'update_cardCtrl'
+      })
+
+      .when('/add_card/:category_name',{
+        templateUrl:'../views/admin_views/add_card.html',
+        controller:'add_cardCtrl'
       })
 
 

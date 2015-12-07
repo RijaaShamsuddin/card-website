@@ -18,15 +18,17 @@
 
 
         <li class="dropdown">
-          <a href="#/admin_category" class="dropdown-toggle" data-toggle="dropdown">Categories
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!-- <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Designs <b class="caret"></b></a>
-               <!--<a >Our Designs &#9662;</a>
-               <ul class="dropdown">
-               <ul class="dropdown-menu">-->
-            <li><a ng-repeat="category in categories" ng-click='fetchCategoryWiseCards(category._id)'>{{category.name}}</a></li>
+            <li><a ng-repeat="category in categories" onMouseOver="this.style.cursor='pointer'"
+                   ng-click='fetchCategoryWiseCards(category.name)'>{{category.name}}</a>
+              <form class="form-inline text-center" method="post">
+                <label for="category" class="sr-only">Category Name</label>
+                <input type="text" id="category" class="form-control" placeholder="Add New Category" required ng-model= data.name>
+                <button class="btn btn-primary" type="button" ng-click="createCategory()"> + </button>
+              </form>
+            </li>
           </ul>
         </li>
         <li>
@@ -55,35 +57,13 @@
   <div class="row">
     <div class="box">
       <div class="col-lg-12 text-center">
-        <!--<div id="carousel-example-generic" class="carousel slide">
-          &lt;!&ndash; Indicators &ndash;&gt;
-          <ol class="carousel-indicators hidden-xs">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-          </ol>-->
 
-        <!-- Wrapper for slides -->
-
-
-        <!--&lt;!&ndash; Controls &ndash;&gt;
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-          <span class="icon-next"></span>
-        </a>
-      </div>-->
         <h1 class="brand-before">
           WELCOME TO
         </h1>
         <h1 class="brand-name"> ADMIN PANEL</h1>
         <hr class="tagline-divider">
-        <!--<h2>
-          <small>By
-            <strong>Start Bootstrap</strong>
-          </small>
-        </h2>-->
+
       </div>
     </div>
   </div>

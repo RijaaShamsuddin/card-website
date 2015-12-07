@@ -9,7 +9,7 @@ app.controller('admin_orderCtrl', function ($scope, $http, $location, sharedMeth
   $scope.categories = Category.query();
 
   $scope.fetchCategoryWiseCards = function (category) {
-    $location.path('/gallery/' + category);
+    $location.path('/admin_category/' + category);
 
   }
 
