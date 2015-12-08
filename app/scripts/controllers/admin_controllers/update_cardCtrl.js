@@ -48,7 +48,7 @@ app.controller('update_cardCtrl', function ($scope, $http, $location, sharedMeth
       })
       .error(function (err) {
         console.log('Error')
-        $scope.errorMessage = 'User already exists with email';
+        $scope.errorMessage = 'Card is same as updated card';
 
       });
 
