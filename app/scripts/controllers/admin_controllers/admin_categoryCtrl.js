@@ -51,6 +51,29 @@ app.controller('admin_categoryCtrl', function ($scope, $http, $location, sharedM
       });
   }
 
+  $scope.createCategory = function() {
+
+
+    $http.post('/category', $scope.data)
+      .success(function (category) {
+        $scope.errorMessage = '';
+        $location.path('/AdminPanel');
+
+
+        console.log('Category created')
+        console.log($scope.data)
+
+
+      })
+      .error(function (err) {
+        console.log('Error')
+        $scope.errorMessage = 'Something went wrong';
+        $scope.data = {
+          name:''
+        }
+
+      });
+  }
 
   $scope.fetchCard = function(card){
     $location.path('/update_card/'+card);
